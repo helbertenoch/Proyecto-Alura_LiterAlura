@@ -8,9 +8,9 @@ import java.util.List;
 public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String nombre;
+    private Long id;
 
+    private String nombre;
     private Integer nacimiento;
     private Integer fallecimiento;
 
@@ -18,14 +18,20 @@ public class Autor {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Libro> libros;
 
+    public Autor() {
+    }
+
     public Autor(String name, Integer integer, Integer integer1) {
+        this.nombre = name;
+        this.nacimiento = integer;
+        this.fallecimiento = integer1;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

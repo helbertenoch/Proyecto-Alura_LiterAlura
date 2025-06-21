@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AutorRepository extends JpaRepository<Autor, Long> {
-    Autor findByNombre(String nombre);
+     Autor findByNombre(String nombre);
 
     Optional<Autor> findByNombreIgnoreCase(String nombre);
 
     List<Autor> findByNacimientoBeforeAndFallecimientoAfter(int nacimiento, int fallecimiento);
     List<Autor> findByNacimientoBeforeAndFallecimientoIsNull(int año);
-
+    Optional<Autor> findByNombreIgnoreCaseAndNacimientoAndFallecimiento(String nombre, Integer nacimiento, Integer fallecimiento);
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LibroMapper {
-    public Libro desdeDTO(LibroDTO dto) {
+    public static Libro desdeDTO(LibroDTO dto) {
         Autor autor = dto.authors() != null && !dto.authors().isEmpty()
                 ? new Autor(
                 dto.authors().get(0).name(),
@@ -16,13 +16,15 @@ public class LibroMapper {
         )
                 : new Autor("Desconocido", null, null);
 
+        autor.setId(null);
+
         String idioma = dto.languages() != null && !dto.languages().isEmpty()
                 ? dto.languages().get(0)
                 : "desconocido";
 
         return new Libro(
                 dto.title(),
-                autor,
+                null,
                 idioma,
                 dto.download_count()
         );
